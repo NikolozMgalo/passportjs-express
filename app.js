@@ -24,7 +24,7 @@ if(!isProduction){
     app.use(errorHandler())
 }
 
-mongoose.connect('mongodb://user123456:user123456@ds129914.mlab.com:29914/auth', { useNewUrlParser : true })
+mongoose.connect('mongodb://user123456:user123456@ds129914.mlab.com:29914/auth', { useNewUrlParser : true})
 mongoose.set('debug', true)
 
 require('./model/user.model')

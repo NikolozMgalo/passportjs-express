@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 const passport = require('passport')
 const router = require('express').Router()
 const auth = require('../auth')
-const User = mongoose.model('User');
+const User = mongoose.model('Users');
 
 
 router.post('/', auth.optional, (req, res, next) => {
-    const { body : { user }} = req;
+    const { body: { user }} = req;
 
     if(!user.email) {
         return res.status(422).json({
@@ -72,7 +72,7 @@ router.post('/login', auth.optional, (req, res, next) => {
 router.get('/current', auth.required, (req, res, next) => {
     const { payload : { id } } = req;
 
-    return User.findById(id)
+    return Users.findById(id)
         .then((user) => {
             if(!user) {
                 return res.sendStatus(400)
