@@ -5,6 +5,7 @@ const session = require('express-session')
 const cors = require("cors")
 const mongoose = require("mongoose")
 const errorHandler = require("errorhandler")
+const db = require('./db.js')
 
 
 mongoose.promise = global.Promise
@@ -24,7 +25,7 @@ if(!isProduction){
     app.use(errorHandler())
 }
 
-mongoose.connect('mongodb://user123456:user123456@ds129914.mlab.com:29914/auth', { useNewUrlParser : true})
+mongoose.connect(db, { useNewUrlParser : true })
 mongoose.set('debug', true)
 
 require('./model/user.model')
