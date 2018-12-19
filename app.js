@@ -16,10 +16,10 @@ const app = express();
 
 app.use(cors())
 app.use(require('morgan')('dev'))
-app.use(bodyParser.urlencoded({extended : false}))
+app.use(bodyParser.urlencoded({extended : true}))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(session({secret : 'passport tutorial', coockie: {maxAge: 6000}, resave: false, saveUninitialized: false }))
+app.use(session({secret : 'passport', coockie: {maxAge: 6000}, resave: false, saveUninitialized: false }))
 
 if(!isProduction){
     app.use(errorHandler())

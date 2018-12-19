@@ -6,8 +6,10 @@ const { Schema } = mongoose
 
 const UsersSchema = new Schema ({
     email: String,
+    password: String,
     hash: String,
     salt: String,
+
 });
 
 UsersSchema.methods.setPassword = function(password)  {
@@ -30,7 +32,7 @@ UsersSchema.methods.generateJWT = function()  {
         email: this.email,
         id: this._id,
         exp: parseInt(expirationDate.getTime() / 1000, 10)
-    }, 'secret');
+    }, 'passport');
 };
 
 
